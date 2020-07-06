@@ -17,7 +17,7 @@ public class Solution {
          double ne = n;
          double pe = p ; 
 
-         //THIS IS BUG OF COMPILER IT SHOULD BE 2 SINCE PAGE 1 IS ALWAYS AT THE RIGHT SIDE
+         //MOST UNIQUE CASE OF ASKING THIS QUESTION FOR A 2 PAGE BOOK
 
          if(n==2 && p==1){
              return 0;
