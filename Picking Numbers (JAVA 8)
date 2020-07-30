@@ -1,0 +1,73 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class Result {
+
+    /*
+     * Complete the 'pickingNumbers' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts INTEGER_ARRAY a as parameter.
+     */
+
+    public static int pickingNumbers(List<Integer> a) {
+    // Write your code here
+    int max = 0;
+    
+ 
+    for(int i = 0;i<a.size();i++){
+      List <Integer> temp = new ArrayList();
+      List <Integer> temp2 = new ArrayList();
+        int n = a.get(i);
+    for(int j = 0;j<a.size();j++){
+        int m = a.get(j);
+     if(m-n==1 || m-n == 0){
+     temp.add(m);
+     }
+      if(n-m ==1 || n-m == 0){
+     temp2.add(m);
+     } 
+    }
+    if(temp.size()>=temp2.size()){
+    if(temp.size()>max){
+    max = temp.size();
+    }}
+    if(temp.size()<temp2.size()){
+    if(temp2.size()>max){
+    max = temp2.size();
+    }}
+    }
+
+    return max;}
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int n = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Integer> a = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+            .map(Integer::parseInt)
+            .collect(toList());
+
+        int result = Result.pickingNumbers(a);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
